@@ -12,26 +12,48 @@ const MateriaSchema = new mongoose.Schema({
       ref: 'usuarios',
       default: null,
     },
-    asistencia : {
-      { fecha },
-      { valor },
-    },
+    asistencia : [{
+      fecha: {
+        type: Date
+      },
+      valor: {
+        type: String,
+        enum: ['P', 'A'],
+        default: 'P'
+      },
+    }],
     notas : {
-      primerParcial,
-      segundoParcial,
-      final,
+      primerParcial: { type: Number, default: 0},
+      segundoParcial: { type: Number, default: 0},
+      recuperatorio: { type: Boolean },
+      final: { type: Number, default: 0 },
     }
   }],
-  descripcion : {
+  programa : [{
     type: String,
-    required: true
-  },
-  programa : {
-    type: []
-  },
-  nota : {
-    type: String
-  }
+  }],
+  profesores : [{
+    profesor: {
+      type: Schema.Types.ObjectId,
+      ref: 'usuarios',
+    },
+    cargo : {
+      type: String,
+      enum: ['Titular', 'Auxiliar']
+    }
+  }],
+  horario : [{
+    dias : [{
+      type: String,
+      enum: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'],
+    }],
+    hora_inicio : {
+      type: Number,
+    },
+    hora_final : {
+      type: Number,
+    }
+  }],
   activo : {
     type: Boolean,
     default: true

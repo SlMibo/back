@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
-const materias = moongose.model('Materia')
+const materias = moongose.model('Materia');
+const usuarios = moongose.model('Usuario');
 
 const CarreraSchema = new mongoose.Schema({
 	nombre : {
@@ -15,20 +16,23 @@ const CarreraSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	curso : [{
-		año: {
+	cursos : [{
+    descripcion: [{
+      type: Number
+    }],
+		alumnos: [{
 			type: Schema.Types.ObjectId,
 			ref: 'usuarios',
 			default: null,
-		}, 
-		materia: {
+		}], 
+    ciclo_lectivo : {
+      type: String,
+    }
+		materias: [{
 			type: Schema.Types.ObjectId,
 			ref: 'materias',
-		},
+		}],
 	}],
-	cohorte : {
-		type: String,
-	},
 	activo : {
 		type: Boolean,
 		default: true
