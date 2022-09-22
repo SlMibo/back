@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const materias = moongose.model('Materia');
 const usuarios = moongose.model('Usuario');
+const carrera = moongose.model('Carrera');
 
 const AnuncioSchema = new mongoose.Schema({
   descripcion : {
@@ -18,6 +19,10 @@ const AnuncioSchema = new mongoose.Schema({
   fecha: {
     type: Date
   },
+  carrera: [{
+    type: Schema.Types.ObjectId,
+    ref: 'carrera'
+  }],
   materia: [{
     type: Schema.Types.ObjectId,
     ref: 'materias'
@@ -36,3 +41,6 @@ const AnuncioSchema = new mongoose.Schema({
     },
   }]
 });
+
+
+module.exports = model('Anuncios', AnuncioSchema);

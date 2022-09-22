@@ -17,17 +17,26 @@ const CarreraSchema = new mongoose.Schema({
 		required: true
 	},
 	cursos : [{
-    descripcion: [{
+    grado: [{
       type: Number
     }],
 		alumnos: [{
+			alumno: {
 			type: Schema.Types.ObjectId,
 			ref: 'usuarios',
 			default: null,
+			},
+			fecha_ingreso : {
+				type: Date,
+				required:true
+			},
+			documentacion : [{
+				type: String
+			}]
 		}], 
     ciclo_lectivo : {
       type: String,
-    }
+    },
 		materias: [{
 			type: Schema.Types.ObjectId,
 			ref: 'materias',
@@ -39,4 +48,4 @@ const CarreraSchema = new mongoose.Schema({
 	}
 })
 
-module.exports = model('Carrera', UserSchema);
+module.exports = model('Carrera', CarreraSchema);

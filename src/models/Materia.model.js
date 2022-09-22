@@ -60,4 +60,4 @@ const MateriaSchema = new mongoose.Schema({
   }
 })
 
-module.exports = model('Materia', UserSchema);
+module.exports = model('Materia', MateriaSchema);
