@@ -37,13 +37,6 @@ const UsuarioSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fecha_ingreso : {
-        type: Date,
-        required:true
-    },
-    documentacion : {
-        type: []
-    },
     rol : {
         type: ['admin', 'profesor', 'alumno'],
         required: true
@@ -54,4 +47,4 @@ const UsuarioSchema = new mongoose.Schema({
     }
 })
 
-module.exports = model('Usuario', UserSchema);
+module.exports = model('Usuario', UsuarioSchema);
