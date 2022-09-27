@@ -8,9 +8,9 @@ const {
   deleteUsuario,
 } = require('../controllers/Usuario.controller');
 
-// normal:
-route.get("/:id", getUsuario);
+
 route.get("/", getUsuarios);
+route.get("/:id", getUsuario);
 route.post("/", createUsuario);
 route.put("/:id", updateUsuario);
 route.put("/password/:id", updateUsuario);

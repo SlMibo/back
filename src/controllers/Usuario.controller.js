@@ -22,17 +22,22 @@ controller.getUsuario = async (req, res) => {
 };
 
 controller.createUsuario = async (req, res) => {
-  let { nombres, apellidos, dni, fecha_nacimiento, genero, direccion, nacionalidad, email, password, fecha_ingreso, documentacion, rol, activo  } = req.body;
+  let { nombres, apellidos, dni, fecha_nacimiento, genero, direccion, nacionalidad, email, password, rol } = req.body;
 
   const salt = bcryptjs.genSaltSync();
   password = bcryptjs.hashSync(password, salt);
 
-  const usuario = new Usuario({ nombres, apellidos, dni, fecha_nacimiento, genero, direccion, nacionalidad, email, password, fecha_ingreso, documentacion, rol });
-  await usuario.save();
-
-  res.json({
-    msg: "Usuario agregado",
-  });
+  try {
+    const usuario = new Usuario({ nombres, apellidos, dni, fecha_nacimiento, genero, direccion, nacionalidad, email, password, rol });
+    await usuario.save();
+  
+    return res.json({
+      msg: "Usuario agregado",
+    });
+    
+  } catch (error) {
+    return console.log(error)
+  }
 };
 
 controller.updateUsuario = async (req, res) => {
@@ -104,10 +109,10 @@ controller.deleteUsuario = async (req, res) => {
   try {
     const usuario = await Usuario.findByIdAndUpdate(
       id,
-      { active: false },
+      { activo: false },
       { new: true }
     );
-
+    return console.log(usuario)
     res.json({
       msg: "El usuario se elimino del sistema",
     });
