@@ -15,7 +15,7 @@ controller.login = async (req, res) => {
         if (validation) {
           const { _id } = usuario;
           //console.log(_id);
-          const token = await jwt_generate(_id);
+          const token = await createJwt(_id);
           console.log(token)
           return res.status(200).json({ usuario: { token }});
         }

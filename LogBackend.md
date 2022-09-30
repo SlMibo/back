@@ -11,7 +11,8 @@
   <li><b style='color:#1ed8b2'>21/9/2022</b> – Refinamiento y finalización de modelado de datos.<i style='color:#1ed8b2' class='fa fa-check'></i>
   <li><b style='color:#1ed8b2'>22/9/2022</b> – Log de desarrollo agregado al repositorio.<i style='color:#1ed8b2' class='fa fa-check'></i>
   <li><b style='color:#1ed8b2'>23/9/2022</b> – Completamiento de rutas.<i style='color:#1ed8b2' class='fa fa-check'></i>
-  <li><b style='color:#1ed8b2'>27/9/2022</b> – Jwt.<i style='color:#1ed8b2' class='fa fa-check'></i>
+  <li><b style='color:#1ed8b2'>27/9/2022</b> – Inicio de configuraciones para jwt. Error de generación del token.<i style='color:#1ed8b2' class='fa fa-check'></i>
+  <li><b style='color:#1ed8b2'>29/9/2022</b> – Corrección de errores. Inicio de middlewares.<i style='color:#1ed8b2' class='fa fa-check'></i>
 </ol>
 
 </div>

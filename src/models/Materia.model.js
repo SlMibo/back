@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
-const usuarios = moongose.model('Usuario')
+//const usuarios = model('Usuario')
 
-const MateriaSchema = new mongoose.Schema({
+const MateriaSchema = new Schema({
   nombre : {
     type: String,
     required: true

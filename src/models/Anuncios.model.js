@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose');
-const materias = moongose.model('Materia');
-const usuarios = moongose.model('Usuario');
-const carrera = moongose.model('Carrera');
+// const materias = moongose.model('Materia');
+// const usuarios = moongose.model('Usuario');
+// const carrera = moongose.model('Carrera');
 
-const AnuncioSchema = new mongoose.Schema({
+const AnuncioSchema = new Schema({
   descripcion : {
   type: String,
   required: true
@@ -17,7 +17,8 @@ const AnuncioSchema = new mongoose.Schema({
     enum: ['General', 'Curso', 'Materia']
   },
   fecha: {
-    type: Date
+    type: Date,
+    default: Date.now()
   },
   carrera: [{
     type: Schema.Types.ObjectId,

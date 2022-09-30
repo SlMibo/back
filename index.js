@@ -2,7 +2,6 @@ require('./src/connection/connect');
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const jwt = require('jsonwebtoken');
 
 app.use(express.json());
 
@@ -14,3 +13,6 @@ app.listen(app.get('port') , () => {
 
 app.use('/usuario', require('./src/routes/usuario.routes'));
 app.use('/login', require('./src/routes/login.routes'));
+app.use('/carrera', require('./src/routes/carrera.routes'));
+app.use('/materia', require('./src/routes/materia.routes'));
+app.use('/anuncio', require('./src/routes/anuncio.routes'));

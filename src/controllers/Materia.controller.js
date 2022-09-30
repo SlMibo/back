@@ -1,12 +1,12 @@
 const Materia = require('../models/Materia.model');
 const controller = {};
 
-controller.getMaterias = async (_req, res) => {
+controller.getMaterias = async (req, res) => {
   const materias = await Materia.find({ activo: true });
   res.json(materias);
 };
 
-controller.getMateria = async (_req, res) => {
+controller.getMateria = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -19,10 +19,10 @@ controller.getMateria = async (_req, res) => {
   }
 };
 
-controller.createMateria = async (_req, res) => {
-  let { nombre, descripcion, programa } = req.body;
+controller.createMateria = async (req, res) => {
+  let { nombre, descripcion } = req.body;
 
-  const materia = new Materia({ nombre, descripcion, programa });
+  const materia = new Materia({ nombre, descripcion });
   await materia.save();
 
   res.json({
@@ -30,7 +30,7 @@ controller.createMateria = async (_req, res) => {
   });
 };
 
-controller.updateMateria = async (_req, res) => {
+controller.updateMateria = async (req, res) => {
   const { id } = req.params;
   const { nombre, descripcion, programa, alumnos, asistencia, notas } = req.body;
   const update = {};
@@ -73,7 +73,7 @@ controller.updateMateria = async (_req, res) => {
   };
 };
 
-controller.deleteMateria = (_req, res) => {
+controller.deleteMateria = async (req, res) => {
   const { id } = req.params;
 
   try {

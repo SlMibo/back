@@ -18,8 +18,8 @@ const UsuarioSchema = new Schema({
         required: true
     },
     genero : {
-        type: ['Masculino', 'Femenino', 'Otro'],
-        required: true
+        type: String,
+        enum: ['Masculino', 'Femenino', 'Otro']
     },
     direccion : {
         type: String,

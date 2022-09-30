@@ -1,7 +1,7 @@
 const Carrera = require('../models/Carrera.model');
 const controller = {};
 
-controller.getCarreras = async (_req, res) => {
+controller.getCarreras = async (req, res) => {
     const carreras = await Carrera.find({ activo: true });
     res.json(carreras);
 }
@@ -14,12 +14,12 @@ controller.getCarrera = async (_req, res) => {
     res.json(carrera);
   } catch (error) {
     res.json({
-      msg: "Error al obtener usuario",
+      msg: "Error al obtener carrera",
     });
   }
 }
 
-controller.createCarrera = async (_req, res) => {
+controller.createCarrera = async (req, res) => {
   let { nombre, duracion, descripcion } = req.body;
 
   const carrera = new Carrera({ nombre, duracion, descripcion });
@@ -30,7 +30,7 @@ controller.createCarrera = async (_req, res) => {
   });
 }
 
-controller.updateCarrera = async (_req, res) => {
+controller.updateCarrera = async (req, res) => {
   const { id } = req.params;
   const { nombre, duracion, descripcion, activo } = req.body;
   const update = {};
@@ -65,7 +65,7 @@ controller.updateCarrera = async (_req, res) => {
   }
 }
 
-controller.deleteCarrera = async (_req, res) => {
+controller.deleteCarrera = async (req, res) => {
   const { id } = req.params;
 
   try {
