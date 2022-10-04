@@ -20,9 +20,9 @@ controller.getMateria = async (req, res) => {
 };
 
 controller.createMateria = async (req, res) => {
-  let { nombre, descripcion } = req.body;
+  let { nombre, descripcion, profesores, alumnos } = req.body;
 
-  const materia = new Materia({ nombre, descripcion });
+  const materia = new Materia({ nombre, descripcion, profesores, alumnos });
   await materia.save();
 
   res.json({

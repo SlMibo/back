@@ -6,7 +6,7 @@ controller.getCarreras = async (req, res) => {
     res.json(carreras);
 }
 
-controller.getCarrera = async (_req, res) => {
+controller.getCarrera = async (req, res) => {
   const { id } = req.params;
 
   try {

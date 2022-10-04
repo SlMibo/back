@@ -20,20 +20,20 @@ const CarreraSchema = new Schema({
     grado: [{
       type: Number
     }],
-		alumnos: [{
-			alumno: {
-			type: Schema.Types.ObjectId,
-			ref: 'usuarios',
-			default: null,
-			},
-			fecha_ingreso : {
-				type: Date,
-				required:true
-			},
-			documentacion : [{
-				type: String
-			}]
-		}], 
+	alumnos: [{
+		alumno: {
+		type: Schema.Types.ObjectId,
+		ref: 'usuarios',
+		default: null,
+		},
+		fecha_ingreso : {
+			type: Date,
+			required:true
+		},
+		documentacion : [{
+			type: String
+		}]
+	}], 
     ciclo_lectivo : {
       type: String,
     },
