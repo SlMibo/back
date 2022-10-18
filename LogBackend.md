@@ -13,6 +13,15 @@
   <li><b style='color:#1ed8b2'>23/9/2022</b> – Completamiento de rutas.<i style='color:#1ed8b2' class='fa fa-check'></i>
   <li><b style='color:#1ed8b2'>27/9/2022</b> – Inicio de configuraciones para jwt. Error de generación del token.<i style='color:#1ed8b2' class='fa fa-check'></i>
   <li><b style='color:#1ed8b2'>29/9/2022</b> – Corrección de errores.<i style='color:#1ed8b2' class='fa fa-check'></i> Inicio de middlewares.
+  <li><b style='color:#1ed8b2'>18/10/2022</b> – Definición de rutas correspondientes a funcionalidades: 
+    <ul><li style='color:#FFB94F'>Consulta de alumnos con su información de materias que cursa, asistencias y notas.
+    <li style='color:#FFB94F'>Consulta de profesores con materias con sus roles específicos, horarios.
+    <li style='color:#FFB94F'>Consulta de publicaciones por usuario, materia.
+    <li style='color:#FFB94F'>Consulta de alumnos con asistencia inferior al 80%.
+    <li style='color:#FFB94F'>Consulta de alumnos con nota final inferior a 6.
+    <li style='color:#FFB94F'>Consulta de cursantes de una carrera, materia, incluyendo profesores.
+    <li style='color:#FFB94F'>Consulta de notas y asistencias en una materia.
+    </ul>
 </ol>
 
 </div>

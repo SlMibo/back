@@ -1,8 +1,9 @@
 const Usuario = require('../models/Usuario.model');
+const Materia = require('../models/Materia.model');
 const bcryptjs = require("bcryptjs");
 const controller = {};
 
-controller.getUsuarios = async (_req, res) => {
+controller.getUsuarios = async (req, res) => {
   const usuarios = await Usuario.find({ activo: true });
 
   res.json(usuarios);
