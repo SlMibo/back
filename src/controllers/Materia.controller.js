@@ -7,10 +7,27 @@ controller.getMaterias = async (req, res) => {
 };
 
 controller.getMateria = async (req, res) => {
-  const { id } = req.params;
+  // const { _id, nombre, alumnos, programa, profesores } = materia;
+  // const materiaF = { _id, nombre, alumnos };
 
+  // console.log(materiaF);
+  const { id, activo } = req.params;
+ 
   try {
-    const materia = await Materia.findOne({_id: id});
+    const materia = await Materia.findOne({_id: id, activo: true})
+    .populate({
+      path: 'alumnos.alumno',
+      select: 'nombres -_id '
+    }).populate({
+      path: 'profesores.profesor',
+      select: 'nombres cargo -_id'
+    });
+
+    // const { _id, nombre, alumnos, programa, profesores } = materia;
+    // const materiaF = { _id, nombre, alumnos };
+
+    // console.log(materiaF.alumnos);
+
     res.json(materia);
   } catch(error) {
     res.json({

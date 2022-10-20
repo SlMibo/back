@@ -10,11 +10,26 @@ controller.getUsuarios = async (req, res) => {
 };
 
 controller.getUsuario = async (req, res) => {
-  const { id } = req.params;
+  // const { id } = req.params;
+
+  // try {
+  //   const usuario = await Usuario.findOne({ _id: id });
+  //   res.json(usuario);
+  // } catch (error) {
+  //   res.json({
+  //     msg: "Error al obtener usuario",
+  //   });
+  // }
+  const { id, rol, activo } = req.params;
 
   try {
-    const usuario = await Usuario.findOne({ _id: id });
-    res.json(usuario);
+    const estudiante = await Usuario.findOne({ _id: id, rol: 'alumno', activo: true })
+    .populate({
+      path: 'materia',
+      select: 'alumno',
+      match: { alumno: '633603c20574c7beca3ca403' }
+  });
+    res.json(estudiante);
   } catch (error) {
     res.json({
       msg: "Error al obtener usuario",
@@ -121,5 +136,23 @@ controller.deleteUsuario = async (req, res) => {
     res.status(500).json({ msg: "Error al eliminar usuario" });
   }
 };
+
+controller.getAlumno = async (req, res) => {
+  const { id, rol, activo } = req.params;
+
+  try {
+    const estudiante = await Usuario.findOne({ _id: id, rol: 'alumno', activo: true })
+    .populate({
+      path: 'materia',
+      select: 'alumno',
+      match: { alumno: '633603c20574c7beca3ca403' }
+  });
+    res.json(estudiante);
+  } catch (error) {
+    res.json({
+      msg: "Error al obtener usuario",
+    });
+  }
+}
 
 module.exports = controller;

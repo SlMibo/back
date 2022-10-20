@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-//const usuarios = model('Usuario')
+const Usuario = require('./Usuario.model');
 
 const MateriaSchema = new Schema({
   nombre : {
@@ -9,8 +9,7 @@ const MateriaSchema = new Schema({
   alumnos : [{
     alumno: {
       type: Schema.Types.ObjectId,
-      ref: 'usuarios',
-      default: null,
+      ref: 'Usuario'
     },
     asistencia : [{
       fecha: {
@@ -35,7 +34,7 @@ const MateriaSchema = new Schema({
   profesores : [{
     profesor: {
       type: Schema.Types.ObjectId,
-      ref: 'usuarios',
+      ref: 'Usuario',
     },
     cargo : {
       type: String,

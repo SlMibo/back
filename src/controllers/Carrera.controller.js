@@ -7,22 +7,38 @@ controller.getCarreras = async (req, res) => {
 }
 
 controller.getCarrera = async (req, res) => {
-  const { id } = req.params;
+  const { id, activo } = req.params;
+
+  // try {
+  //   const carrera = await Carrera.findOne({ _id: id });
+  //   res.json(carrera);
+  // } catch (error) {
+  //   res.json({
+  //     msg: "Error al obtener carrera",
+  //   });
+  // }
 
   try {
-    const carrera = await Carrera.findOne({ _id: id });
+    const carrera = await Carrera.findOne({_id: id, activo: true})
+    .populate({
+      path: 'cursos.alumnos.alumno',
+      select: 'nombres -_id'
+    }).populate({
+      path: 'cursos.materias',
+      select: 'nombre -_id'
+    });
     res.json(carrera);
-  } catch (error) {
+  } catch(error) {
     res.json({
-      msg: "Error al obtener carrera",
+      msg: 'Error al obtener carrera.'
     });
   }
 }
 
 controller.createCarrera = async (req, res) => {
-  let { nombre, duracion, descripcion } = req.body;
+  let { nombre, duracion, descripcion, cursos } = req.body;
 
-  const carrera = new Carrera({ nombre, duracion, descripcion });
+  const carrera = new Carrera({ nombre, duracion, descripcion, cursos });
   await carrera.save();
 
   res.json({
